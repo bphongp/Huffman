@@ -6,7 +6,7 @@
 CXX = clang++
 CXXFLAGS = -Wall -g
 
-OFILES= huffmandec.o huffmanNode.o
+OFILES= heap.o huffmanNode.o huffmanenc.o huffmanTree.o
 
 .SUFFIXES: .o .cpp
 
@@ -17,6 +17,8 @@ clean:
 	/bin/rm -f *.o *~
 	/bin/rm -f *.out
 
+heap.o: heap.cpp heap.h huffmanNode.h
+huffmanTree.o: huffmanTree.cpp huffmanTree.h huffmanNode.h heap.h
 huffmanNode.o: huffmanNode.cpp huffmanNode.h
-huffmanenc.o: huffmandec.cpp heap.h huffmanNode.h 
+huffmanenc.o: huffmanenc.cpp heap.h huffmanNode.h huffmanTree.h
 
